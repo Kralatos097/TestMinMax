@@ -25,10 +25,10 @@ public class AIBrain {
             foreach (Coordinate availableMove in availablePiece.AvailableMoves(Board)) {
                 Node node = new Node(Board, Player, Player, availablePiece.CurrentCoordinate, availableMove);
                 
-                int value = MinMax(node, DepthSearch, false);
+                //int value = MinMax(node, DepthSearch, false);
                 //int value = NegaMax(node, DepthSearch, -1);
                 //int value = AlphaBeta(node, DepthSearch, false, -100000000, 100000000);
-                //int value = NegaAlphaBeta(node, DepthSearch, false, -10000000);
+                int value = NegaAlphaBeta(node, DepthSearch, false, -10000000);
                 
                 Nodes.Add(new Tuple<int, Node>(value, node));
             }

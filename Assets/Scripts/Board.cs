@@ -48,9 +48,11 @@ public struct Board : ICloneable {
             if (piece == null) continue;
             value += piece.Value * 2 * (playerColor == piece.Player ? 1 : -1);
 
-            value += piece.AvailableNomNom(this, piece.AvailableMoves(this)) * (playerColor == piece.Player ? 1 : -1);
+            List<Coordinate> availableMoves = piece.AvailableMoves(this);
 
-            foreach (Coordinate coordinate in piece.AvailableMoves(this))
+            value += piece.AvailableNomNom(this, availableMoves) * (playerColor == piece.Player ? 1 : -1);
+
+            foreach (Coordinate coordinate in availableMoves)
             {
                 if(coordinate.Row == 4 || coordinate.Row == 5)
                 {
