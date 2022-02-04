@@ -32,6 +32,11 @@ public struct Board : ICloneable {
         return Matrix[coordinate.Row, coordinate.Column]?.Player == playerColor;
     }
     
+    public bool CanNomNomCoordinate(Coordinate coordinate, PlayerColor playerColor)
+    {
+        return Matrix[coordinate.Row, coordinate.Column]?.Player == playerColor;
+    }
+    
     public bool ValidCoordinate(Coordinate coordinate) {
         return coordinate.Row >= 0 && coordinate.Row < Matrix.GetLength(0) && 
                coordinate.Column >= 0 && coordinate.Column < Matrix.GetLength(1);
@@ -41,7 +46,17 @@ public struct Board : ICloneable {
         int value = 0;
         foreach (Piece piece in Matrix) {
             if (piece == null) continue;
-            value += piece.Value * (playerColor == piece.Player ? 1 : -1);
+            value += piece.Value * 2 * (playerColor == piece.Player ? 1 : -1);
+
+            value += piece.AvailableNomNom(this, piece.AvailableMoves(this)) * (playerColor == piece.Player ? 1 : -1);
+
+            foreach (Coordinate coordinate in piece.AvailableMoves(this))
+            {
+                if(coordinate.Row == 4 || coordinate.Row == 5)
+                {
+                    value += (playerColor == piece.Player ? 1 : -1);
+                }
+            }
         }
         return value;
     }
