@@ -27,8 +27,8 @@ public class AIBrain {
                 
                 //int value = MinMax(node, DepthSearch, false);
                 //int value = NegaMax(node, DepthSearch, -1);
-                //int value = AlphaBeta(node, DepthSearch, false, -100000000, 100000000);
-                int value = NegaAlphaBeta(node, DepthSearch, false, -10000000);
+                int value = AlphaBeta(node, DepthSearch, false, -100000000, 100000000);
+                //int value = NegaAlphaBeta(node, DepthSearch, false, -10000000);
                 
                 Nodes.Add(new Tuple<int, Node>(value, node));
             }

@@ -1187,7 +1187,7 @@ MonoBehaviour:
       Data: 
   AutoPlay: 1
   UseTestingBoard: 0
-  Depth: 3
+  Depth: 2
   CameraPivot: {fileID: 150945448}
   TimeBeforeRotation: 1
   CheckersWhiteMenPrefab: {fileID: 3734317919805586836, guid: f9f56594e7ec8f34f9a20aefd5928259, type: 3}
